@@ -369,6 +369,24 @@ function unlockAudio() {
   </style>
 </head>
 <body>
+      <script>
+        // Tự động scale toàn bộ game để vừa mọi màn hình
+        function scaleGameWrap() {
+          var baseW = 1460, baseH = 820;
+          var ww = window.innerWidth, wh = window.innerHeight;
+          var scale = Math.min(ww / baseW, wh / baseH);
+          var wrap = document.getElementById('wrap');
+          if (wrap) {
+            wrap.style.transform = 'scale(' + scale + ')';
+            wrap.style.left = ((ww - baseW * scale) / 2) + 'px';
+            wrap.style.top = ((wh - baseH * scale) / 2) + 'px';
+            wrap.style.position = 'absolute';
+          }
+        }
+        window.addEventListener('resize', scaleGameWrap);
+        window.addEventListener('orientationchange', scaleGameWrap);
+        window.addEventListener('DOMContentLoaded', scaleGameWrap);
+      </script>
     <link rel="stylesheet" href="rotate-orientation.css">
     <div id="rotateNotice" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(30,40,30,0.97);color:#fff;align-items:center;justify-content:center;text-align:center;font-size:2.2em;font-family:sans-serif;flex-direction:column;">
       <div style="margin-bottom:18px;">🔄</div>
