@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kim Cương Xếp Hình</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      header {
+        text-align: center;
+        padding: 24px 16px 8px;
+      }
+
+      canvas {
+        background: radial-gradient(circle at top, #1e293b, #0f172a 60%);
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+      }
+
+      .hud {
+        width: min(920px, 94vw);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 16px 0 32px;
+      }
+
+      .panel {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 12px;
+        padding: 12px 16px;
+      }
+
+      .panel h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #f8fafc;
+      }
+
+      .legend {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+      }
+
+      .chip {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Kim Cương Xếp Hình</h1>
+      <p>Nhấp để đặt viên kim cương lên lưới, tạo 3 viên cùng màu liên tiếp để thắng.</p>
+    </header>
+    <canvas id="game" width="900" height="600"></canvas>
+    <div class="hud">
+      <div class="panel">
+        <h2>Điều khiển</h2>
+        <ul>
+          <li>Chuột: chọn ô và đặt viên kim cương.</li>
+          <li>Phím 1/2/3: chọn màu kế tiếp.</li>
+          <li>Phím R: chơi lại.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Trạng thái</h2>
+        <div id="status">Đang chơi...</div>
+        <p><strong>Viên kế tiếp:</strong> <span id="next-piece">-</span></p>
+        <div class="legend">
+          <span><i class="chip" style="background:#3b82f6"></i>Lam</span>
+          <span><i class="chip" style="background:#ec4899"></i>Hồng</span>
+          <span><i class="chip" style="background:#22c55e"></i>Lục</span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
